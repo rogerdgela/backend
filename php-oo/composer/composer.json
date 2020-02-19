@@ -1,0 +1,25 @@
+{
+  "name": "son/phpjcto",
+  "description": "Exemplo de um projeto",
+  "require":{
+    "silex/silex": "1.0.*@stable",
+    "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
+    "doctrine/orm": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "authors": [
+    {
+      "name": "Rogerio",
+      "email": "dgelask8@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-0": {"SON": "src/"}
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
