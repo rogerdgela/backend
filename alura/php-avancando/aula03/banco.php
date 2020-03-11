@@ -40,10 +40,6 @@ function sacar(array $conta, float $valorASacar): array
     return $conta;
 }
 
-foreach ($contasCorrentes as $cpf => $conta) {
-    exibeMensagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
-}
-
 $contasCorrentes['123.456.789-10'] = sacar(
     $contasCorrentes['123.456.789-10'],
     500
@@ -58,3 +54,7 @@ $contasCorrentes['123.256.789-12'] = depositar(
     $contasCorrentes['123.256.789-12'],
     900
 );
+
+foreach ($contasCorrentes as $cpf => $conta) {
+    exibeMensagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
+}
