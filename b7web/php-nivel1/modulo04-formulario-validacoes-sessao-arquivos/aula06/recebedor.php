@@ -6,4 +6,7 @@ if($nome){
     $_SESSION['name'] = $nome;
     header('Location: index.php');
     exit();
+}else{
+    header('Location: login.php');
+    exit();
 }
