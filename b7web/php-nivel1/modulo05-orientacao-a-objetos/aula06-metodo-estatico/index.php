@@ -3,7 +3,7 @@
 
 class Matematica
 {
-    public static string $variavel;
+    public static string $variavel = "20";
 
     public static function somar($n1,$n2)
     {
@@ -11,4 +11,5 @@ class Matematica
     }
 }
 
+echo Matematica::$variavel;
 echo Matematica::somar(1,6);
