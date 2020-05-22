@@ -1,7 +1,7 @@
 <?php
 require_once "BancoDados.php";
 
-class MysqlDB implements Polimosfismo
+class MysqlDB implements BancoDados
 {
     public function listarUser()
     {
@@ -20,7 +20,7 @@ class MysqlDB implements Polimosfismo
 
 }
 
-class OracleDB implements Polimosfismo
+class OracleDB implements BancoDados
 {
     public function listarUser()
     {
