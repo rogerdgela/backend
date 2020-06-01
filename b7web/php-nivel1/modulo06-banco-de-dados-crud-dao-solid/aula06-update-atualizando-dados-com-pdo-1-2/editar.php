@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-$id = filter_input(INPUT_GET, 'id');
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $info = [];
 if($id){
     $sql_select = "SELECT * FROM usuarios WHERE id = :id;";
