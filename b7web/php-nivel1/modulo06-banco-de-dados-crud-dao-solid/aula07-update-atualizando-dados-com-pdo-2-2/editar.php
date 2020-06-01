@@ -23,7 +23,6 @@ if($id){
 ?>
 
 <form method="post" action="update_action.php">
-    <input type="hidden" name="id" value="<?= $info['id']; ?>">
     <label>Nome</label><br>
     <input type="text" name="name" value="<?= $info['name']; ?>">
 

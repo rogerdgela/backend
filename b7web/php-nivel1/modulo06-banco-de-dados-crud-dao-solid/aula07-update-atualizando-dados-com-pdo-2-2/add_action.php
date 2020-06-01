@@ -27,3 +27,4 @@ if($name and $email){
     header('Location: add_user.php');
     exit();
 }
+
