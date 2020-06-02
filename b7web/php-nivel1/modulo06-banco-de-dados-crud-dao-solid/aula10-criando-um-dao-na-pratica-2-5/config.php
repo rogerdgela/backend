@@ -1,6 +1,6 @@
 <?php
 
-$db_name = 'teste';
+$db_name = 'crud';
 $db_user = 'root';
 $db_senha = '';
 $db_host = '';

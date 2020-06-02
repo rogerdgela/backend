@@ -18,8 +18,6 @@ class UsuarioDaoMysql implements UsuarioDAO
 
     public function findAll()
     {
-        $array = [];
-
         $sql = $this->pdo->query('SELECT * FROM usuarios');
 
         if($sql->rowCount() > 0){
@@ -31,11 +29,11 @@ class UsuarioDaoMysql implements UsuarioDAO
                 $user->setNome($item['nome']);
                 $user->setEmail($item['email']);
 
-                $array[] = $user;
+                $infos[] = $user;
             }
         }
 
-        return $array;
+        return $infos;
     }
 
     public function findById($id)
