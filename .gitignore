@@ -1,2 +1,3 @@
 .idea/
 /alura/php-doctrine-introducao-ao-mapeamento-objeto-relacional/aula01-criando-o-entityManager/vendor/
+/alura/php-doctrine-introducao-ao-mapeamento-objeto-relacional/aula02-persistindo-a-primeira-entidade/vendor/
