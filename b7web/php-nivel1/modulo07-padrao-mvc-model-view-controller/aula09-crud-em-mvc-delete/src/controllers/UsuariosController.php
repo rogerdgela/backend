@@ -50,6 +50,7 @@ class UsuariosController extends Controller {
         if($name and $email){
             Usuario::update()->set('nome', $name)
                              ->set('email', $email)
+                             ->where('id', $args['id'])
             ->execute();
 
             $this->redirect('/');
