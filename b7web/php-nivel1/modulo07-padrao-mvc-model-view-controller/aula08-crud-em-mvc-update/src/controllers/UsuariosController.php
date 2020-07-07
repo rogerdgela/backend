@@ -34,7 +34,7 @@ class UsuariosController extends Controller {
 
     public function edit($args)
     {
-        $usuario = Usuario::select()->where('id',$args['id'])->one();
+        $usuario = Usuario::select()->where('id', $args['id'])->one();
 
         $this->render('edit', [
                 'usuario' => $usuario
@@ -50,6 +50,7 @@ class UsuariosController extends Controller {
         if($name and $email){
             Usuario::update()->set('nome', $name)
                              ->set('email', $email)
+                             ->where('id', $args['id'])
             ->execute();
 
             $this->redirect('/');
