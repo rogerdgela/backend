@@ -2,7 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \scr\handlers\LoginHandler;
+use \src\handlers\LoginHandler;
 
 class HomeController extends Controller {
 
@@ -10,7 +10,7 @@ class HomeController extends Controller {
 
     public function __construct()
     {
-        $this->$this->loggedUser = LoginHandler::checkLogin();
+        $this->loggedUser = LoginHandler::checkLogin();
 
         if(LoginHandler::checkLogin() === false){
             $this->redirect('/login');
