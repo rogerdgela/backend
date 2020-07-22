@@ -2,7 +2,6 @@
 
 namespace src\handlers;
 
-use Fixed\constant;
 use \src\models\User;
 
 class LoginHandler
@@ -14,7 +13,7 @@ class LoginHandler
 
             $data = User::select()->where('token', $token)->one();
 
-            if(count($data) > 0){
+            if(is_array($data) && count($data) > 0){
                 $loggedUser = new User();
                 $loggedUser->id = $data['id'];
                 $loggedUser->email = $data['email'];
@@ -41,5 +40,26 @@ class LoginHandler
         }
 
         return false;
+    }
+
+    public static function emailExists($email)
+    {
+        $user = User::select()->where('email', $email)->one();
+        return $user ? true : false;
+    }
+
+    public static function adduser($name, $email, $password, $birthdate)
+    {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $token = md5(time().rand(0,9999).time());
+
+        User::insert([
+            'name' => ucwords(trim($name)),
+            'email' => mb_strtolower(trim($email)),
+            'password' => $hash,
+            'birthdate' => $birthdate
+        ])->execute();
+
+        return $token;
     }
 }
