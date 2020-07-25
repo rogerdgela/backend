@@ -5,8 +5,29 @@
         <div class="row">
             <div class="column pr-5">
                 <?= $render('feed-editor', ['user' => $loggedUser]); ?>
-
-                <?= $render('feed-item'); ?>
+                <?php
+                    foreach ($feed['posts'] as $feedItem){
+                        $render('feed-item', [
+                                'data' => $feedItem,
+                                'loggedUser' => $loggedUser
+                        ]);
+                    }
+                ?>
+                <?php
+/*                    if($feed['pageCount'] > 1){
+                */?>
+                    <div class="feed-pagination">
+                        <?php
+                            for($q = 0; $q < $feed['pageCount']; $q++){
+                        ?>
+                                <a class="<?= ($q == $feed['currentPage']) ? 'active' : ''; ?>" href="<?= $base; ?>/?page=<?= $q; ?>"><?= $q+1; ?></a>
+                        <?php
+                            }
+                        ?>
+                    </div>
+                <?php
+/*                    }
+                */?>
             </div>
 
             <div class="column side pl-5">
@@ -24,7 +45,7 @@
                 </div>
                 <div class="box">
                     <div class="box-body m-10">
-                        Criado com ❤️ por B7Web
+                        Criado com ❤️ por Dgelas DEVs
                     </div>
                 </div>
             </div>

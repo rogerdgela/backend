@@ -20,7 +20,7 @@ class PostController extends Controller {
 
     public function new()
     {
-        $body = filter_input(INPUT_POST,'body',FILTER_SANITIZE_SPECIAL_CHARS);
+        $body = filter_input(INPUT_POST,'body', FILTER_SANITIZE_STRING);
 
         if($body){
             PostHandler::addPost(
