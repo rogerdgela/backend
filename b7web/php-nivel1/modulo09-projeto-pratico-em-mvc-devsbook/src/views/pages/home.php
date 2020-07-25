@@ -14,8 +14,8 @@
                     }
                 ?>
                 <?php
-/*                    if($feed['pageCount'] > 1){
-                */?>
+                    if($feed['pageCount'] > 1){
+                ?>
                     <div class="feed-pagination">
                         <?php
                             for($q = 0; $q < $feed['pageCount']; $q++){
@@ -26,8 +26,8 @@
                         ?>
                     </div>
                 <?php
-/*                    }
-                */?>
+                    }
+                ?>
             </div>
 
             <div class="column side pl-5">
