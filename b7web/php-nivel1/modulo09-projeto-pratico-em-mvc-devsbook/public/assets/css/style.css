@@ -404,10 +404,13 @@ header .head-side {
     background-color: #FFFFFF;
     color: #4A76A8;
 }
-.feed-pagination a.active{
+.feed-pagination a.active_disabled{
     background-color: #a4a6b0;
     color: #FFFFFF;
+    pointer-events: none;
+    cursor: default;
 }
+
 
 @media (max-width: 992px) {
     header .head-side-right {
