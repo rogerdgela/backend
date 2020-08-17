@@ -28,7 +28,7 @@ class Usuarios
     public function login($email, $senha){
         global $pdo;
 
-        $sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND senha = :senha");
+        $sql = $pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha");
         $sql->bindValue(":email", $email);
         $sql->bindValue(":senha", md5($senha));
         $sql->execute();
@@ -36,7 +36,7 @@ class Usuarios
         if($sql->rowCount() > 0){
             $dado = $sql->fetch(PDO::FETCH_ASSOC);
             $_SESSION['cLogin'] = $dado['id'];
-
+            $_SESSION['cNomeUsuario'] = $dado['nome'];
             return true;
         }
 

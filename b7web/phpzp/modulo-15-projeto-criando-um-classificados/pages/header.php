@@ -17,6 +17,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <?php if(isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])){ ?>
+                <li><a href="#"><?= ucwords($_SESSION['cNomeUsuario']); ?></a></li>
                 <li><a href="meus-anuncio.php">Meu Anúncios</a></li>
                 <li><a href="sair.php">Sair</a></li>
             <?php }else{ ?>
