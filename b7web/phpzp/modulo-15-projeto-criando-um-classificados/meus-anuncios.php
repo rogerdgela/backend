@@ -1,10 +1,11 @@
 <?php
-require_once 'pages/header.php';
-if(empty($_SESSION['cLogin'])){
+    require_once 'pages/header.php';
+    if(empty($_SESSION['cLogin'])){
 ?>
-    <script type="text/javascript">window.location.href="login.php";</script>
+        <script type="text/javascript">window.location.href="login.php";</script>
 <?php
-}
+        exit();
+    }
 ?>
 
     <div class="container">

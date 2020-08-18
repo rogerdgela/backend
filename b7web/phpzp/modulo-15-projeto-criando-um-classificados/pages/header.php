@@ -1,6 +1,7 @@
 <?php require_once 'config.php' ?>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Classificados</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
