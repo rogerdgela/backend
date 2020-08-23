@@ -26,7 +26,7 @@
 
                         <?php foreach ($info['fotos'] as $chave => $foto){ ?>
                             <div class="item <?= ($chave == '0') ? 'active' : ''; ?>" style="width:100%;">
-                                <img src="assets/images/anuncios/<?= $foto['url']; ?>">
+                                <img src="assets/images/anuncios/<?= $foto['url']; ?>" style="width: 100%">
                             </div>
                         <?php } ?>
                     </div>
