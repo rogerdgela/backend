@@ -33,8 +33,8 @@
                 <td><?= $anuncio['titulo']; ?></td>
                 <td>R$ <?= number_format($anuncio['valor'],2,',','.'); ?></td>
                 <td>
-                    <a href="<?= BASE_URL ?>anuncios/editar/<?= $anuncio['id']; ?>" class="btn btn-default">Editar</a>
-                    <a href="<?= BASE_URL ?>anuncios/excluir/<?= $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
+                    <a href="<?= BASE_URL ?>anuncios/edit/<?= $anuncio['id']; ?>" class="btn btn-default">Editar</a>
+                    <a href="<?= BASE_URL ?>anuncios/delete/<?= $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             <?php
