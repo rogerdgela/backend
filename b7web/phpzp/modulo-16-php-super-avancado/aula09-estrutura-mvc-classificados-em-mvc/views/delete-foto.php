@@ -14,4 +14,3 @@
     }else{
         header('Location: ' . BASE_URL . 'anuncios/');
     }
-?>

@@ -24,4 +24,11 @@ class LoginController extends Controller
 
         $this->loadTemplate('login', $dados);
     }
+
+    public function sair()
+    {
+        session_start();
+        unset($_SESSION['cLogin']);
+        header('Location: ' . BASE_URL . 'login');
+    }
 }

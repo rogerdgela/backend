@@ -104,8 +104,17 @@ class AnunciosController extends Controller
     public function deletefoto($id, $id_anuncio)
     {
         $dados = [];
+
         $dados['id'] = $id;
         $dados['id_anuncio'] = $id_anuncio;
+
         $this->loadTemplate('delete-foto', $dados);
+    }
+
+    public function delete($id)
+    {
+        $dados = [];
+        $dados['id'] = $id;
+        $this->loadTemplate('delete-anuncio', $dados);
     }
 }
