@@ -2,15 +2,15 @@
 
 class Cache
 {
-    public function verifyCache()
+    public function verifyCache($arquivo)
     {
-        if(file_exists('cache.cache')){
+        if(file_exists($arquivo)){
            return true;
         }
     }
 
-    public function saveCache($html)
+    public function saveCache($arquivo, $html)
     {
-        file_put_contents('cache.cache', $html);
+        file_put_contents($arquivo, $html);
     }
 }

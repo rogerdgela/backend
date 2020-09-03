@@ -3,7 +3,7 @@ require_once 'Cache.php';
 
 $cache = new Cache();
 
-if($cache->verifyCache()){
+if($cache->verifyCache('cache.cache')){
     require_once 'cache.cache';
 }else{
     ob_start();
@@ -11,7 +11,7 @@ if($cache->verifyCache()){
     $html = ob_get_contents();
     ob_end_clean();
 
-    $cache->saveCache($html);
+    $cache->saveCache('cache.cache', $html);
     echo $html;
 }
 
