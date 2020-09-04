@@ -7,6 +7,8 @@ class Cache
         if(file_exists($arquivo)){
            return true;
         }
+
+        return false;
     }
 
     public function saveCache($arquivo, $html)
