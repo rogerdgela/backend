@@ -1,0 +1,3 @@
+galeria
+
+tem <?= $qt; ?> fotos
