@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula28-projeto-galeria-de-fotos/index.php?url=$1 [QSA,L]
