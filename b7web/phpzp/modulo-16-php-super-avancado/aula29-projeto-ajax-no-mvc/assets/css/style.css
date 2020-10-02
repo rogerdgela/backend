@@ -1,0 +1,11 @@
+body{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.borda{
+    border: 1px solid #ff0000;
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+}
