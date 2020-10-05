@@ -6,13 +6,13 @@ global $db;
 
 $config = array();
 if(ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula30-projeto-popular-select-a-partir-de-outro/");
+	define("BASE_URL", "http://localhost/cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula31-projeto-popular-select-a-partir-de-outro/");
 	$config['dbname'] = 'projeto_popularselect';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';
 } else {
-    define("BASE_URL", "http://localhost/cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula30-projeto-popular-select-a-partir-de-outro/");
+    define("BASE_URL", "http://localhost/cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula31-projeto-popular-select-a-partir-de-outro/");
 	$config['dbname'] = 'projeto_popularselect';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';

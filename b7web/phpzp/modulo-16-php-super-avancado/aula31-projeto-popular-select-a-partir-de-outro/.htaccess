@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula30-projeto-popular-select-a-partir-de-outro/index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ /cursos/backend/b7web/phpzp/modulo-16-php-super-avancado/aula31-projeto-popular-select-a-partir-de-outro/index.php?url=$1 [QSA,L]
