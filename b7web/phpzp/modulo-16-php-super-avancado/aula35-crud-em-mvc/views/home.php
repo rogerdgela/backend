@@ -1,3 +1,4 @@
+<a href="<?= BASE_URL ?>contatos/add">[ ADD ]</a>
 <table border="1" width="100%">
     <tr>
         <th>ID</th>

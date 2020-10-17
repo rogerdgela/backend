@@ -1,9 +1,6 @@
 <?php
-class homeController extends controller {
-
-    public function __construct() {
-        parent::__construct();
-    }
+class HomeController extends controller
+{
 
     public function index()
     {
