@@ -36,7 +36,27 @@ class ContatosController extends controller
 
     public function edit($id)
     {
+        $dados = ['info' => ''];
 
+        if(!empty($id)){
+            $contatos = new Contatos();
+
+            if(!empty($_POST['nome'])){
+                $nome = addslashes($_POST['nome']);
+                $email = addslashes(mb_strtolower($_POST['email']));
+
+                $contatos->edit($nome, $email, $id);
+            }else{
+                $dados['info'] = $contatos->get($id);
+
+                if(isset($dados['info']['id'])){
+                    $this->loadTemplate('edit', $dados);
+                    exit();
+                }
+            }
+        }
+
+        header('Location: '.BASE_URL);
     }
 
     public function del($id)

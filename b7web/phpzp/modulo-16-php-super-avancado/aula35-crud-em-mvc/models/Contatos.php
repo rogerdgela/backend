@@ -53,4 +53,29 @@ class Contatos extends Model
         $sql->bindValue(':id', $id);
         $sql->execute();
     }
+
+    public function get($id)
+    {
+        $array = [];
+
+        $sql = "SELECT * FROM contatos WHERE id = :id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $array =  $sql->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
+    }
+
+    public function edit($nome, $email, $id){
+        $sql = "UPDATE contatos SET nome = :nome, email = :email WHERE id = :id";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':nome', $nome);
+        $sql->bindValue(':email', $email);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+    }
 }
