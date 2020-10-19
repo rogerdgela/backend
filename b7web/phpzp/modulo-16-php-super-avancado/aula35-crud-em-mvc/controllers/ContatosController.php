@@ -33,4 +33,19 @@ class ContatosController extends controller
             header('Location: '.BASE_URL.'contatos/add');
         }
     }
+
+    public function edit($id)
+    {
+
+    }
+
+    public function del($id)
+    {
+        if(!empty($id)){
+            $contatos = new Contatos();
+            $contatos->delete($id);
+        }
+
+        header('Location: '.BASE_URL);
+    }
 }

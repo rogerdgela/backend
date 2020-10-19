@@ -12,7 +12,8 @@
             <td><?= $item['nome'] ?></td>
             <td><?= $item['email'] ?></td>
             <td>
-
+                <a href="<?= BASE_URL ?>contatos/edit/<?= $item['id']; ?>">[ Editar ]</a>
+                <a href="<?= BASE_URL ?>contatos/del/<?= $item['id']; ?>">[ Excluir ]</a>
             </td>
         </tr>
     <?php } ?>
