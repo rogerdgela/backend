@@ -1,0 +1,3 @@
+Erro no arquivo: C:\wamp64\www\cursos\backend\b7web\phpzp\modulo-18-php7\aula05-throwable-errors\index.php
+Na linha: 3
+Erro: Call to undefined function teste()
