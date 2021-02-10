@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin
+Disallow: /config.php
+Disallow: /assets
+Disallow: /models
+Disallow: /views
+Disallow: /environment.php
