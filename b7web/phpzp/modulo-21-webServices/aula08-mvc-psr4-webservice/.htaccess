@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /b7web.backend/phpzp/modulo-21-webServices/aula08-mvc-psr4-webservice/index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ /phpzp/modulo-21-webServices/aula08-mvc-psr4-webservice/index.php?url=$1 [QSA,L]
