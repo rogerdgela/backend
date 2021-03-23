@@ -7,13 +7,18 @@ use \Models\Usuarios;
 class HomeController extends Controller
 {
 
-	public function index() {
-		$array = array();
+	public function index()
+    {
 
-		$usuarios = new Usuarios();
-		$array['lista'] = $usuarios->getAll();
-
-		$this->loadTemplate('home', $array);
 	}
 
+	public function testando()
+    {
+        echo 'Testando';
+    }
+
+    public function visualizar_usuarios($id)
+    {
+        echo 'ID: '.$id;
+    }
 }

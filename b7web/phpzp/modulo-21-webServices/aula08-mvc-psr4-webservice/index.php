@@ -5,6 +5,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-control-Allow-Methods: *');
 
 require 'config.php';
+require 'routers.php';
 require 'vendor/autoload.php';
 
 $core = new \Core\Core();
