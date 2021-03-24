@@ -2,7 +2,6 @@
 namespace Controllers;
 
 use \Core\Controller;
-use \Models\Usuarios;
 
 class HomeController extends Controller
 {
