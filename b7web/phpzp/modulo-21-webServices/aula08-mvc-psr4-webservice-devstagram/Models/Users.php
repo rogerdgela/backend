@@ -2,6 +2,7 @@
 namespace Models;
 
 use \Core\Model;
+use \Models\Jwt;
 
 class Users extends Model
 {
@@ -25,5 +26,12 @@ class Users extends Model
         }
 
         return false;
+    }
+
+    public function createJwt()
+    {
+        $jwt = new Jwt();
+
+        return $jwt->create(['id_user' => $this->id_user]);
     }
 }

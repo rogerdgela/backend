@@ -20,7 +20,7 @@ class UsersController extends Controller
                 $user = new Users();
 
                 if($user->checkCredentials($data['email'], $data['pass'])){
-                    $array['jwt'] = '...';
+                    $array['jwt'] = $user->createJwt();
                 }else{
                     $array['error'] = 'Acesso negado';
                 }
