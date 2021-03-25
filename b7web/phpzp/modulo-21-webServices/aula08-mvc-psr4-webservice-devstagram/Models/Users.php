@@ -7,7 +7,8 @@ use \Models\Jwt;
 class Users extends Model
 {
     private $id_user;
-    public function checkCredentials($email,$pass)
+
+    public function checkCredentials($email, $pass)
     {
         $sql = 'SELECT id, pass FROM users WHERE email = :email';
 
