@@ -37,7 +37,7 @@ class Users extends Model
         $sql->execute();
 
         if($sql->rowCount() > 0){
-            $info = $sql->fetch(PDO::FETCH_ASSOC);
+            $info = $sql->fetch(\PDO::FETCH_ASSOC);
 
             if(password_verify($pass, $info['pass'])){
                 $this->id_user = $info['id'];
@@ -49,11 +49,30 @@ class Users extends Model
         return false;
     }
 
+
+    public function getId()
+    {
+        return $this->id_user;
+    }
+
     public function createJwt()
     {
         $jwt = new Jwt();
 
         return $jwt->create(['id_user' => $this->id_user]);
+    }
+
+    public function validadeJwt($token)
+    {
+        $jwt = new Jwt();
+        $info = $jwt->validate($token);
+
+        if(isset($info->id_user)){
+            $this->id_user = $info->id_user;
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private function emailExists($email)
