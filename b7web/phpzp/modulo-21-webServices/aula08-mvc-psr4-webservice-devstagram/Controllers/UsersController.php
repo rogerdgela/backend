@@ -2,7 +2,6 @@
 namespace Controllers;
 
 use \Core\Controller;
-use Models\Jwt;
 use \Models\Users;
 
 class UsersController extends Controller
@@ -88,7 +87,11 @@ class UsersController extends Controller
 
             switch ($method){
                 case 'GET':
+                    $array['data'] = $users->getInfo($id);
 
+                    if(count($array['data']) === 0){
+                        $array['error'] = 'usuário não existe';
+                    }
                     break;
                 case 'PUT':
 
