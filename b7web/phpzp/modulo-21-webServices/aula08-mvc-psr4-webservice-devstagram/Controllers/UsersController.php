@@ -94,7 +94,7 @@ class UsersController extends Controller
                     }
                     break;
                 case 'PUT':
-
+                    $array['error'] = $users->editInfo($id, $data);
                     break;
                 case 'DELETE':
 
