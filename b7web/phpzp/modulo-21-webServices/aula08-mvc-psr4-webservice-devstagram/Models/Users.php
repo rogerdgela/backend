@@ -147,14 +147,20 @@ class Users extends Model
         if($id === $this->getId()){
             $toChange = [];
 
-            if(!$data['name']){
+            if(!empty($data['name'])){
                 $toChange['name'] = $data['name'];
             }
 
-            if(!empty($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL) && $this>$this->emailExists($data['email'])){
-                $toChange['email'] = $data['email'];
-            }else{
-                return 'E-mail com problemas';
+            if(!empty($data['email'])){
+                if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                    if(!$this->emailExists($data['email'])){
+                        $toChange['email'] = $data['email'];
+                    }else{
+                        return 'E-mail existente';
+                    }
+                }else{
+                    return 'E-mail inválido';
+                }
             }
 
             if(!empty($data['pass'])){
@@ -162,7 +168,22 @@ class Users extends Model
             }
 
             if(count($toChange) > 0){
+                $fields = [];
 
+                foreach ($toChange as $k => $v){
+                    $fields[] = $k.' = :'.$k;
+                }
+
+                $sql = 'UPDATE users SET '.implode(',', $fields).' WHERE id = :id';
+                $sql = $this->db->prepare($sql);
+
+                foreach ($toChange as $k => $v){
+                    $sql->bindValue(':'.$k, $v);
+                }
+
+                $sql->bindValue(':id', $id);
+                $sql->execute();
+                return null;
             }else{
                 return 'Não há dados para serem alterados';
             }
