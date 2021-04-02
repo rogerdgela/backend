@@ -191,4 +191,26 @@ class Users extends Model
             return 'Não é permitido editar outro usuário';
         }
     }
+
+    public function delete($id)
+    {
+        if($id = $this->getId()){
+            $photos = new Photos();
+            $photos->deleteAll($id);
+
+            $sql = "DELETE FROM users_following WHERE id_user_active = :id or id_ussr_passive = :id";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            $sql = "DELETE FROM users WHERE id = :id";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            return '';
+        }else{
+            return 'Não é permitido excluir outro usuário';
+        }
+    }
 }
