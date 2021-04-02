@@ -97,7 +97,7 @@ class UsersController extends Controller
                     $array['error'] = $users->editInfo($id, $data);
                     break;
                 case 'DELETE':
-                    $array['error'] = $users->delete($id);
+                    $array['error'] = $users->remove($id);
                     break;
 
                 default:

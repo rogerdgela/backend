@@ -192,7 +192,7 @@ class Users extends Model
         }
     }
 
-    public function delete($id)
+    public function remove($id)
     {
         if($id = $this->getId()){
             $photos = new Photos();
