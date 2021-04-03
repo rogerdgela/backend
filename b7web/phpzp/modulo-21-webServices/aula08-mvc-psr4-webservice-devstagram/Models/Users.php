@@ -113,7 +113,7 @@ class Users extends Model
         // pegar os seguidores
         $followingUsers = $this->getFollowing($this->getId());
 
-        // liagem da ultimas fotos dos seguidores
+        // listagem da ultimas fotos dos seguidores
         $photosUser = new Photos();
         return $photosUser->getFeedCollection($followingUsers, $offset, $per_page);
     }
