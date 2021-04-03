@@ -110,4 +110,42 @@ class UsersController extends Controller
 
         $this->returnJson($array);
     }
+
+    public function feed()
+    {
+        $array = [
+            'error' => '',
+            'logged' => false
+        ];
+
+        $method = $this->getMethod();
+        $data = $this->getResquestData();
+
+        $users = new Users();
+
+        if(!empty($data['jwt']) && $users->validadeJwt($data['jwt'])){
+            $array['logged'] = true;
+
+            if($method == 'GET'){
+                $offset = 0;
+                if(!empty($data['offset'])){
+                    $offset = intval($data['offset']);
+                }
+
+                $per_page = 10;
+                if(!empty($per_page['per_page'])){
+                    $per_page = intval($data['per_page']);
+                }
+
+                $array['data'] = $users->getFeed($offset, $per_page);
+            }else{
+                $array['error'] = 'Método '.$method.' não disponível';
+            }
+
+        }else{
+            $array['error'] = 'Acesso negado';
+        }
+
+        $this->returnJson($array);
+    }
 }

@@ -108,6 +108,36 @@ class Users extends Model
         return $info['c'];
     }
 
+    public function getFeed($offset = 0, $per_page = 10)
+    {
+        // pegar os seguidores
+        $followingUsers = $this->getFollowing($this->getId());
+
+        // liagem da ultimas fotos dos seguidores
+        $photosUser = new Photos();
+        return $photosUser->getFeedCollection($followingUsers, $offset, $per_page);
+    }
+
+    public function getFollowing($id_user)
+    {
+        $array = [];
+
+        $sql = 'SELECT id_user_passive FROM users_following WHERE id_user_active = :id';
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':id', $id_user);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $data = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+            foreach ($data as $item){
+                $array[] = intval($item['id_user_passive']);
+            }
+        }
+
+        return $array;
+    }
+
     public function createJwt()
     {
         $jwt = new Jwt();
