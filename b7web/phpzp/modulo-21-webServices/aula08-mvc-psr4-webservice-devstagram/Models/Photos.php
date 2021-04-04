@@ -42,7 +42,7 @@ class Photos extends Model
     	$users = new Users();
 
     	if(count($ids) > 0){
-    		$sql = 'SELECT * FROM photos WHERE id_user IN ('.implode(','.$ids).') ORDER BY id DESC LIMIT '.$offset.', '.$per_page;
+    		$sql = 'SELECT * FROM photos WHERE id_user IN ('.implode(',',$ids).') ORDER BY id DESC LIMIT '.$offset.', '.$per_page;
     		$sql = $this->db->query($sql);
 
     		if($sql->rowCount() > 0){
