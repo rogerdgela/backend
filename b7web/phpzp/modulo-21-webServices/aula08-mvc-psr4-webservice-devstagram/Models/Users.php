@@ -14,11 +14,11 @@ class Users extends Model
         if(!$this->emailExists($email)){
             $hash = password_hash($pass, PASSWORD_DEFAULT);
 
-            $sql = 'INSERT INTO users (name, email, pass) VALUES (:name, :email, :pass)';
+            $sql = "INSERT INTO users (name, email, pass) VALUES (:name, :email, :pass)";
             $sql = $this->db->prepare($sql);
-            $sql->bindValue(':name', $name);
-            $sql->bindValue(':email', $email);
-            $sql->bindValue(':pass', $hash);
+            $sql->bindValue(":name", $name);
+            $sql->bindValue(":email", $email);
+            $sql->bindValue(":pass", $hash);
             $sql->execute();
 
             $this->id_user = $this->db->lastInsertId();
@@ -31,17 +31,17 @@ class Users extends Model
 
     public function checkCredentials($email, $pass)
     {
-        $sql = 'SELECT id, pass FROM users WHERE email = :email';
+        $sql = "SELECT id, pass FROM users WHERE email = :email";
 
         $sql = $this->db->prepare($sql);
-        $sql->bindValue(':email', $email);
+        $sql->bindValue(":email", $email);
         $sql->execute();
 
         if($sql->rowCount() > 0){
             $info = $sql->fetch(\PDO::FETCH_ASSOC);
 
-            if(password_verify($pass, $info['pass'])){
-                $this->id_user = $info['id'];
+            if(password_verify($pass, $info["pass"])){
+                $this->id_user = $info["id"];
 
                 return true;
             }
@@ -59,7 +59,7 @@ class Users extends Model
     {
         $array = [];
 
-        $sql = 'SELECT id,name,email,avatar FROM users WHERE id = :id';
+        $sql = "SELECT id,name,email,avatar FROM users WHERE id = :id";
 
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':id', $id);
@@ -86,7 +86,7 @@ class Users extends Model
 
     public function getFollowingCount($id_user)
     {
-        $sql = 'SELECT count(*) as c FROM users_following WHERE id_user_active = :id';
+        $sql = "SELECT count(*) as c FROM users_following WHERE id_user_active = :id";
 
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':id', $id_user);
@@ -98,7 +98,7 @@ class Users extends Model
 
     public function getFollowersCount($id_user)
     {
-        $sql = 'SELECT count(*) as c FROM users_following WHERE id_user_passive = :id';
+        $sql = "SELECT count(*) as c FROM users_following WHERE id_user_passive = :id";
 
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':id', $id_user);
@@ -122,9 +122,9 @@ class Users extends Model
     {
         $array = [];
 
-        $sql = 'SELECT id_user_passive FROM users_following WHERE id_user_active = :id';
+        $sql = "SELECT id_user_passive FROM users_following WHERE id_user_active = :id";
         $sql = $this->db->prepare($sql);
-        $sql->bindValue(':id', $id_user);
+        $sql->bindValue(":id", $id_user);
         $sql->execute();
 
         if($sql->rowCount() > 0){
@@ -160,7 +160,7 @@ class Users extends Model
 
     private function emailExists($email)
     {
-        $sql = 'SELECT id FROM users WHERE email = :email';
+        $sql = "SELECT id FROM users WHERE email = :email";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':email', $email);
         $sql->execute();
@@ -204,7 +204,7 @@ class Users extends Model
                     $fields[] = $k.' = :'.$k;
                 }
 
-                $sql = 'UPDATE users SET '.implode(',', $fields).' WHERE id = :id';
+                $sql = "UPDATE users SET ".implode(",", $fields)." WHERE id = :id";
                 $sql = $this->db->prepare($sql);
 
                 foreach ($toChange as $k => $v){
@@ -215,10 +215,10 @@ class Users extends Model
                 $sql->execute();
                 return null;
             }else{
-                return 'Não há dados para serem alterados';
+                return "Não há dados para serem alterados";
             }
         }else{
-            return 'Não é permitido editar outro usuário';
+            return "Não é permitido editar outro usuário";
         }
     }
 
@@ -238,9 +238,9 @@ class Users extends Model
             $sql->bindValue(':id', $id);
             $sql->execute();
 
-            return '';
+            return "";
         }else{
-            return 'Não é permitido excluir outro usuário';
+            return "Não é permitido excluir outro usuário";
         }
     }
 }
