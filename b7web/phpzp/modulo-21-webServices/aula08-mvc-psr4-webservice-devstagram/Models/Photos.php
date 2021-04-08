@@ -6,6 +6,35 @@ use \Core\Model;
 
 class Photos extends Model
 {
+	public function getRandonPhotos($per_page, $excludes = [])
+	{
+		$array = [];
+
+		foreach ($excludes as $k => $item){
+			$excludes[$k] = intval($item);
+		}
+
+		if(count($excludes) > 0){
+			$sql = "SELECT * FROM photos WHERE id NOT IN (".implode(',', $excludes).") ORDER BY RAND() LIMIT ".$per_page;
+		}else{
+			$sql = "SELECT * FROM photos ORDER BY RAND() LIMIT ".$per_page;
+		}
+
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+			foreach ($array as $k => $item){
+				$array[$k]['url'] = BASE_URL.'media/photos/'.$item['url'];
+				$array[$k]['like_count'] = $this->getLikeCount($item['id']);
+				$array[$k]['comments'] = $this->getComments($item['id']);
+			}
+		}
+
+		return $array;
+	}
+
     public function getPhotosCount($id_user)
     {
         $sql = "SELECT count(*) as c FROM photos WHERE id_user = :id";
