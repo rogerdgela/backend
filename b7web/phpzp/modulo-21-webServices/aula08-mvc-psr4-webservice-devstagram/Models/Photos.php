@@ -6,6 +6,31 @@ use \Core\Model;
 
 class Photos extends Model
 {
+	public function getPhoto($id_photo)
+	{
+		$array = [];
+		$users = new Users();
+
+		$sql = "SELECT * FROM photos WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':id',$id_photo);
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch(\PDO::FETCH_ASSOC);
+
+			$user_info = $users->getInfo($array['id_user']);
+			$array['name'] = $user_info['name'];
+			$array['avatar'] = $user_info['avatar'];
+			$array['url'] = BASE_URL.'media/photos/'.$array['url'];
+
+			$array['like_count'] = $this->getLikeCount($array['id']);
+			$array['comments'] = $this->getComments($array['id']);
+		}
+
+		return $array;
+	}
+
 	public function getRandonPhotos($per_page, $excludes = [])
 	{
 		$array = [];
