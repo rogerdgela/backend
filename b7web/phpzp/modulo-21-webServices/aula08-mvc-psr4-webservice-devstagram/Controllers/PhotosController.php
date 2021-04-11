@@ -70,7 +70,7 @@ class PhotosController extends Controller
 					$array['data'] = $photos->getPhoto($id_photo);
 					break;
 				case 'DELETE':
-
+					$array['data'] = $photos->deletePhoto($id_photo, $users->getId());
 					break;
 				default:
 					$array['error'] = 'Método '.$method.' não disponível';
