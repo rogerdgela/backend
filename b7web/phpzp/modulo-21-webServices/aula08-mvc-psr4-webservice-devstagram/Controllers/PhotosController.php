@@ -83,4 +83,43 @@ class PhotosController extends Controller
 
 		$this->returnJson($array);
 	}
+
+	public function comment($id_photo)
+	{
+		$array = [
+			'error' => '',
+			'logged' => false
+		];
+
+		$method = $this->getMethod();
+		$data = $this->getResquestData();
+
+		$users = new Users();
+		$photos = new Photos();
+
+		if(!empty($data['jwt']) && $users->validadeJwt($data['jwt'])){
+			$array['logged'] = true;
+
+			switch ($method){
+				case 'POST':
+					if(!empty($data['txt'])){
+						$data['error'] = $photos->addComment($id_photo, $users->getId(), $data['txt']);
+					}else{
+						$data['error'] = "Não há comentário a ser postado";
+					}
+					break;
+				case 'DELETE':
+
+					break;
+				default:
+					$array['error'] = 'Método '.$method.' não disponível';
+					break;
+			}
+
+		}else{
+			$array['error'] = 'Acesso negado';
+		}
+
+		$this->returnJson($array);
+	}
 }
