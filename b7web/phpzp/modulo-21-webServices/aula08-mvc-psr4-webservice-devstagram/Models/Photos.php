@@ -212,4 +212,27 @@ class Photos extends Model
 			return  "Não há comentário a ser postado";
 		}
 	}
+
+	public function deleteComment($id_comment, $id_user)
+	{
+		$sql = "SELECT photos_comments.id FROM photos_comments  
+                LEFT JOIN photos ON photos.id = photos_comments.id_photo 
+                WHERE (photos_comments.id_user = :id_user AND photos_comments.id = :id_comment)
+                OR (photos_comments.id = :id_comment AND photos.id_user = :id_user)";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':id_user', $id_user);
+		$sql->bindValue(':id_comment', $id_comment);
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$sql = "DELETE FROM photos_comments WHERE id = :id_comment";
+			$sql = $this->db->prepare($sql);
+			$sql->bindValue(':id_comment', $id_comment);
+			$sql->execute();
+
+			return "";
+		}else{
+			return "Esse comentário não é seu.";
+		}
+	}
 }
