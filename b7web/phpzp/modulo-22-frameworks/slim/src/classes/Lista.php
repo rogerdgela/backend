@@ -17,4 +17,11 @@ class Lista {
 
         return $array;
     }
+
+    public function add($data){
+        $sql = $this->db->prepare("INSERT INTO lista SET nome = :nome, telefone = :telefone");
+        $sql->bindValue(':nome', $data['nome']);
+        $sql->bindValue(':telefone', $data['telefone']);
+        $sql->execute();
+    }
 }
