@@ -4,6 +4,7 @@
 
 <ul>
     <?php foreach ($lista as $item){ ?>
-        <li> <?= $item['nome']; ?> - <?= $item['telefone']; ?></li>
+        <li><?= $item['nome']; ?> - <?= $item['telefone']; ?> <a href="./edit/<?= $item['id']?>">Editar</a> | <a href="
+        ./del/<?= $item['id'] ?>">Excluir</a></li>
     <?php } ?>
 </ul>
