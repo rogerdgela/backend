@@ -2,7 +2,7 @@
 
 use Alura\Doctrine\Helper\EntityManagerFactory;
 
-require_once __DIR__ . "vendor/autoload.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 $entityManagerfactory = new EntityManagerFactory();
 $entityManager = $entityManagerfactory->getEntityManager();

@@ -9,6 +9,10 @@ use Doctrine\ORM\Tools\Setup;
 
 class EntityManagerFactory
 {
+    /**
+     * @return EntityManagerInterface
+     * @throws \Doctrine\ORM\ORMException
+     */
 
     public function getEntityManager() : EntityManagerInterface
     {
