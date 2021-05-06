@@ -1,27 +1,29 @@
 <?php
 
-use Alura\Doctrine\Entity\Aluno;
-use Alura\Doctrine\Helper\EntityManagerFactory;
+    use Alura\Doctrine\Entity\Aluno;
+    use Alura\Doctrine\Helper\EntityManagerFactory;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
 
-$entityManagerFactory = new EntityManagerFactory();
-$entityManager = $entityManagerFactory->getEntityManager();
+    $entityManagerFactory = new EntityManagerFactory();
+    $entityManager = $entityManagerFactory->getEntityManager();
 
-$alunoRepository = $entityManager->getRepository(Aluno::class);
+    $alunoRepository = $entityManager->getRepository(Aluno::class);
 
-/** @var Aluno[] $alunoList */
-$alunoList = $alunoRepository->findAll();
+    /** @var Aluno[] $alunoList */
 
-foreach ($alunoList as $aluno) {
-    echo "ID: {$aluno->getId()}\nNome: {$aluno->getNome()}\n\n";
-}
+    $alunoList = $alunoRepository->findAll();
 
-$nico = $alunoRepository->find(4);
-echo $nico->getNome() . "\n\n";
+    foreach ($alunoList as $aluno){
+        echo "ID: {$aluno->getId()}\nNome: {$aluno->getNome()}\n\n";
+    }
 
-$sergioLopes = $alunoRepository->findBy([
-    'nome' => 'Sergio Lopes'
-]);
+    /*$nico = $alunoRepository->find(4);
 
-var_dump($sergioLopes);
+    echo $nico->getNome()."\n";
+
+    $rogerio = $alunoRepository->findOneBy([
+        'nome' => 'Rogerio Silva'
+    ]);
+
+    var_dump($rogerio);*/

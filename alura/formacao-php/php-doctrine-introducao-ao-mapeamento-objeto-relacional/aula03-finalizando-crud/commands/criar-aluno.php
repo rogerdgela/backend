@@ -1,16 +1,16 @@
 <?php
 
-use Alura\Doctrine\Entity\Aluno;
-use Alura\Doctrine\Helper\EntityManagerFactory;
+    use Alura\Doctrine\Entity\Aluno;
+    use Alura\Doctrine\Helper\EntityManagerFactory;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
 
-$aluno = new Aluno();
-$aluno->setNome($argv[1]);
+    $aluno = new Aluno();
+    $aluno->setNome($argv[1]);
 
-$entityManagerFactory = new EntityManagerFactory();
-$entityManager = $entityManagerFactory->getEntityManager();
+    $entityManagerFactory = new EntityManagerFactory();
+    $entityManager = $entityManagerFactory->getEntityManager();
 
-$entityManager->persist($aluno);
+    $entityManager->persist($aluno);
 
-$entityManager->flush();
+    $entityManager->flush();

@@ -1,18 +1,17 @@
 <?php
 
-use Alura\Doctrine\Entity\Aluno;
-use Alura\Doctrine\Helper\EntityManagerFactory;
+    use Alura\Doctrine\Entity\Aluno;
+    use Alura\Doctrine\Helper\EntityManagerFactory;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
 
-$entityManagerFactory = new EntityManagerFactory();
-$entityManager = $entityManagerFactory->getEntityManager();
+    $entityManagerFactory = new EntityManagerFactory();
+    $entityManager = $entityManagerFactory->getEntityManager();
 
-$id = $argv[1];
-$novoNome = $argv[2];
+    $id = $argv[1];
+    $novoNome = $argv[2];
 
-$aluno = $entityManager->find(Aluno::class, $id);
-$aluno->setNome($novoNome);
+    $aluno = $entityManager->find(Aluno::class, $id);
+    $aluno->setNome($novoNome);
 
-$entityManager->flush();
-
+    $entityManager->flush();
