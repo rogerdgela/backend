@@ -45,9 +45,9 @@ class Curso
         return $this;
     }
 
-    public function addAluno(Aluno $aluno)
+    public function addAluno(Aluno $aluno): self
     {
-        if ($this->alunos->contains($aluno)) {
+        if($this->alunos->contains($aluno)){
             return $this;
         }
 
@@ -57,7 +57,7 @@ class Curso
         return $this;
     }
 
-    public function getAlunos()
+    public function getAlunos(): Collection
     {
         return $this->alunos;
     }
