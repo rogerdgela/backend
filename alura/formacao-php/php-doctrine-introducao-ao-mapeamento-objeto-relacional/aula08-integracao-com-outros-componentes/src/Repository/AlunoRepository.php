@@ -22,7 +22,6 @@ class AlunoRepository extends EntityRepository
             ->addSelect('c')
             ->getQuery();
 
-
         return $query->getResult();
     }
 }
