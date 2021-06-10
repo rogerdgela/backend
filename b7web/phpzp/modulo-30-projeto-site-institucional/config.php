@@ -7,7 +7,7 @@ if(ENVIRONMENT == 'development') {
 	$config['dbname'] = 'siteinstitucional';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
-	$config['dbpass'] = 'root';
+	$config['dbpass'] = '';
 } else {
 	$config['dbname'] = 'siteinstitucional';
 	$config['host'] = 'localhost';
