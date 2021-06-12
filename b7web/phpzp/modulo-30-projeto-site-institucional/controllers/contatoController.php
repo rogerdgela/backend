@@ -18,11 +18,11 @@ class contatoController extends controller {
             
             $para = "suporte@b7web.com.br";
             $assunto = "Dúvida do site";
-            $mensagem = "Nome: ".$nome."<br/>E-mail: ".$email."<br/>Mensagem: ".$msg;
+            $mensagem = "Nome: " . $nome . "<br/>E-mail: " . $email . "<br/>Mensagem: " . $msg;
             
-            $cabecalho = 'From: suporte@b7web.com.br'. "\r\n".
-                    'Reply-To: '.$email. "\r\n".
-                    'X-Mailer: PHP/'.phpversion();
+            $cabecalho = 'From: suporte@b7web.com.br' . "\r\n" .
+                    'Reply-To: ' . $email . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
                         
             mail($para, $assunto, $mensagem, $cabecalho);
             

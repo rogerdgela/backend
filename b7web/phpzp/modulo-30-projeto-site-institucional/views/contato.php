@@ -3,7 +3,7 @@
     
     <?php
     if(!empty($aviso)) {
-        echo $aviso."<br/><br/>";
+        echo $aviso . "<br/><br/>";
     }
     ?>
     
