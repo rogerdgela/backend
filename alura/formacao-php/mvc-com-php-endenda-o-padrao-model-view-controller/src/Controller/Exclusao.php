@@ -24,7 +24,7 @@ class Exclusao implements InterfaceControladorRequisicao
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         
         if(is_null($id) || $id === false){
-            header('Location: listar-cursos');
+            header('Location: /listar-cursos');
             return;
         }
         
@@ -32,6 +32,6 @@ class Exclusao implements InterfaceControladorRequisicao
         $this->entityManager->remove($curso);
         $this->entityManager->flush();
 
-        header('Location: listar-cursos');
+        header('Location: /listar-cursos');
     }
 }
