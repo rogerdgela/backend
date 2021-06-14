@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../inicio-html.php' ?>
 
-    <a href="/index.php/novo-curso" class="btn btn-primary mb-2">
+    <a href="novo-curso" class="btn btn-primary mb-2">
         Novo Curso
     </a>
 
@@ -10,8 +10,8 @@
                 <?= $curso->getDescricao(); ?>
 
                 <span>
-                    <a href="/index.php/alterar-curso?id=<?= $curso->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
-                    <a href="/index.php/excluir-curso?id=<?= $curso->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
+                    <a href="alterar-curso?id=<?= $curso->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
+                    <a href="excluir-curso?id=<?= $curso->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
                 </span>
             </li>
         <?php endforeach; ?>

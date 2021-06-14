@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../inicio-html.php' ?>
 
-    <form action="/index.php/realiza-login" method="post">
+    <form action="realiza-login" method="post">
         <div class="form-group">
             <label for="email">E-mail:</label>
             <input type="email" name="email" id="email" class="form-control">
