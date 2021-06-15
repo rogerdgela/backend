@@ -5,10 +5,10 @@ class homeController extends controller {
         parent::__construct();
 
         $u = new usuarios();
-        //echo $u->isLogged(); exit();
+        
         if(!$u->isLogged()){
         	header("Location: /login");
-        	//exit();
+        	exit();
         }
     }
 
