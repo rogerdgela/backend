@@ -11,3 +11,8 @@
 
     <input type="submit" value="Cadastrar">
 </form>
+
+<?php
+    if(!empty($vazio)){
+        echo $vazio;
+    }

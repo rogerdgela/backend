@@ -12,6 +12,6 @@ if(ENVIRONMENT == 'development') {
 	$config['dbname'] = 'twitter';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
-	$config['dbpass'] = 'root';
+	$config['dbpass'] = '';
 }
 ?>
