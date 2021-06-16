@@ -1,6 +1,17 @@
 <?php
 class usuarios extends model
 {
+    private $uid;
+
+    public function __construct($id = null)
+    {
+        parent::__construct();
+
+        if(!empty($id)){
+            $this->uid = $id;
+        }
+    }
+
     public function isLogged()
 	{
 		if(isset($_SESSION['twlg']) && !empty($_SESSION['twlg'])){
@@ -44,5 +55,50 @@ class usuarios extends model
         }
 
         return false;
+    }
+
+    public function getNome()
+    {
+        if(!empty($this->uid)){
+            $sql = "SELECT nome FROM usuarios WHERE id = '".$this->uid."'";
+            $sql = $this->db->query($sql);
+
+            if($sql->rowCount() > 0){
+                $sql = $sql->fetch(PDO::FETCH_ASSOC);
+
+                return $sql['nome'];
+            }
+
+            return;
+        }
+    }
+
+    public function countSeguidos()
+    {
+        $sql = "SELECT * FROM relacionamentos WHERE id_seguidor = '".$this->uid."'";
+        $sql = $this->db->query($sql);
+
+        return $sql->rowCount();
+    }
+
+    public function countSeguidores()
+    {
+        $sql = "SELECT * FROM relacionamentos WHERE id_seguido = '".$this->uid."'";
+        $sql = $this->db->query($sql);
+
+        return $sql->rowCount();
+    }
+
+    public function getUsuarios($limite)
+    {
+        $array = [];
+        $sql = "SELECT * FROM usuarios WHERE id != " . $this->uid . " ORDER BY rand() LIMIT ".$limite;
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
     }
 }

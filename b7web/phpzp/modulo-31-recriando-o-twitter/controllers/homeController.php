@@ -13,7 +13,13 @@ class homeController extends controller {
     }
 
     public function index() {
-        $dados = array();
+        $dados = [];
+
+        $u = new usuarios($_SESSION['twlg']);
+        $dados['nome'] = $u->getNome();
+        $dados['qt_seguidos'] = $u->countSeguidos();
+        $dados['qt_seguidores'] = $u->countSeguidores();
+        $dados['sugestao'] = $u->getUsuarios(5);
 
         $this->loadTemplate('home', $dados);
     }
