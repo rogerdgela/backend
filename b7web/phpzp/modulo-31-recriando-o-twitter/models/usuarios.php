@@ -92,7 +92,9 @@ class usuarios extends model
     public function getUsuarios($limite)
     {
         $array = [];
-        $sql = "SELECT * FROM usuarios WHERE id != " . $this->uid . " ORDER BY rand() LIMIT ".$limite;
+        $sql = "SELECT 
+                *,
+                (SELECT count(*) FROM relacionamentos WHERE relacionamentos.id_seguidor = '".$this->uid."' AND relacionamentos.id_seguido = usuarios.id) as seguido FROM usuarios WHERE id != ". $this->uid ." ORDER BY rand() LIMIT ".$limite;
         $sql = $this->db->query($sql);
 
         if($sql->rowCount() > 0){
@@ -100,5 +102,17 @@ class usuarios extends model
         }
 
         return $array;
+    }
+
+    public function userExite($id)
+    {
+        $sql = "SELECT * FROM usuarios WHERE id = '".$id."'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            return true;
+        }
+
+        return;
     }
 }

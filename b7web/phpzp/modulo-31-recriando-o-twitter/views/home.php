@@ -18,7 +18,9 @@
         <?php foreach ($sugestao as $usuario) { ?>
             <tr>
                 <td><?= $usuario['nome'] ?></td>
-                <td><a href="">Seguir</a></td>
+                <td><?= ($usuario['seguido'] == '0') ? "<a href='/home/seguir/".$usuario['id']."'>Seguir</a>" : "<a href='/home/deseguir/"
+                        .$usuario['id']."'>parar de seguir</a>"
+                    ?></td>
             </tr>
         <?php } ?>
     </table>
