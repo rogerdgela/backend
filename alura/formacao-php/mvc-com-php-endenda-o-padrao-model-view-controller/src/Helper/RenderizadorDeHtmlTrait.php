@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Alura\Cursos\Controller;
+namespace Alura\Cursos\Helper;
 
 
-abstract class ControllerComHtml
+trait RenderizadorDeHtmlTrait
 {
     public function rendererizaHtml(string $caminhotemplate, array $dados): string
     {
