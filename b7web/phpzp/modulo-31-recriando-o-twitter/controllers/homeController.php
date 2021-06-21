@@ -14,8 +14,20 @@ class homeController extends controller {
 
     public function index() {
         $dados = [];
+        $p = new posts();
+
+        if(isset($_POST['msg']) && !empty($_POST['msg'])){
+            $msg = addslashes($_POST['msg']);
+
+            $p->inserirPost($msg);
+        }
 
         $u = new usuarios($_SESSION['twlg']);
+
+        $lista = $u->getSeguidos();
+        $lista[] = $_SESSION['twlg'];
+        $dados['feed'] = $p->getFeed($lista, 10);
+
         $dados['nome'] = $u->getNome();
         $dados['qt_seguidos'] = $u->countSeguidos();
         $dados['qt_seguidores'] = $u->countSeguidores();
