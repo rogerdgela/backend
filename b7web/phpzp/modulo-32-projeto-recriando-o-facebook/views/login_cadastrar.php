@@ -23,6 +23,10 @@
 		<div class="container">
 	        <h1>Cadastrar</h1>
 
+            <?php if(!empty($erro)) { ?>
+                <div class="alert alert-danger" role="alert"><?= $erro ?></div>
+            <?php } ?>
+
             <form method="post">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -40,12 +44,12 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="0" checked>
+                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="1" checked>
                     <label class="form-check-label" for="exampleRadios1">Masculino</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="1">
+                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="2">
                     <label class="form-check-label" for="exampleRadios2">Feminino</label>
                 </div>
 

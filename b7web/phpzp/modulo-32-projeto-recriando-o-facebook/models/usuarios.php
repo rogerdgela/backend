@@ -8,14 +8,14 @@ class usuarios extends model
 
     public function verificarLogin()
     {
-		if(!isset($_SESSION['lgsocial']) || (isset($_SESSION['lgsocial']) && !empty($_SESSION['lgsocial']))) {
+		if(!isset($_SESSION['lgsocial']) || (isset($_SESSION['lgsocial']) && empty($_SESSION['lgsocial']))) {
 			header("Location: ".BASE."login");
 		    exit();
 		}
 	}
 
 	public function logar($email, $senha){
-        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = MD5('$senha')";
         $sql = $this->db->query($sql);
 
         if($sql->rowCount() > 0){
@@ -27,5 +27,32 @@ class usuarios extends model
         }
 
         return "E-mail e/ou senha errado!";
+    }
+
+    public function cadastrar($nome, $email, $senha, $sexo){
+        if(!$this->verificarUsuarioExistente($email)){
+            $sql = "INSERT INTO usuarios SET nome = '$nome', email = '$email', senha = MD5('$senha'), sexo = '$sexo'";
+            $this->db->query($sql);
+
+            $id = $this->db->lastInsertId();
+            $_SESSION['lgsocial'] = $id;
+
+            header("Location: ".BASE);
+            exit;
+        }
+
+        return "Usuário já cadastrado!";
+    }
+
+    public function verificarUsuarioExistente($email)
+    {
+        $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            return true;
+        }
+
+        return false;
     }
 }

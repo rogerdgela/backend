@@ -16,26 +16,9 @@
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
 						<li><a href="<?php echo BASE; ?>">Rede Social</a></li>
-						<li>
-							<form method="GET" action="<?php echo BASE; ?>busca" class="navbar-form navbar-left navbar-input-group">
-								<div class="form-group">
-									<input type="text" name="q" class="form-control" placeholder="Buscar...">
-								</div>
-								<button type="submit" class="btn btn-default">Buscar</button>
-							</form>
-						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-								<?php echo $viewData['usuario_nome']; ?>
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo BASE; ?>perfil">Editar Perfil</a></li>
-								<li><a href="<?php echo BASE; ?>login/sair">Sair</a></li>
-							</ul>
-						</li>
+						<li><a href="<?php echo BASE; ?>login/sair">Sair</a></li>
 					</ul>
 				</div>
 			</div>
