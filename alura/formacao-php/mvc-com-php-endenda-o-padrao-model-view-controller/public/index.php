@@ -1,8 +1,9 @@
 <?php
 
-use Alura\Cursos\Controller\InterfaceControladorRequisicao;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -33,12 +34,15 @@ $creator = new ServerRequestCreator(
 
 $request = $creator->fromGlobals();
 
-$classController = $routes[$caminho];
-/**
- * @var InterfaceControladorRequisicao $controller
- */
-$controller = new $classController();
-$resposta = $controller->processaRequisicao($request);
+$classeControladora = $routes[$caminho];
+
+/** @var ContainerInterface $container */
+$container = require __DIR__ . '/../config/dependencies.php';
+
+/** @var RequestHandlerInterface $controlador */
+$controlador = $container->get($classeControladora);
+
+$resposta = $controlador->handle($request);
 
 foreach ($resposta->getHeaders() as $name => $values) {
     foreach ($values as $value) {
