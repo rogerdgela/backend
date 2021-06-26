@@ -43,14 +43,17 @@
                     <input type="password" class="form-control" name="senha" id="senha">
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="1" checked>
-                    <label class="form-check-label" for="exampleRadios1">Masculino</label>
-                </div>
+                <div class="form-group">
+                    <label>Sexo:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">Masculino</label>
+                    </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="2">
-                    <label class="form-check-label" for="exampleRadios2">Feminino</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">Feminino</label>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Entrar</button>

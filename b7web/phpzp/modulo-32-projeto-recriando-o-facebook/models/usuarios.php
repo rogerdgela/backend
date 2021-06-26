@@ -55,4 +55,46 @@ class usuarios extends model
 
         return false;
     }
+
+    public function getNome($id)
+    {
+        $sql = "SELECT nome FROM usuarios WHERE id = '$id'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $sql = $sql->fetch(PDO::FETCH_ASSOC);
+            return $sql['nome'];
+        }
+
+        return null;
+    }
+
+    public function getDados($id)
+    {
+        $array = [];
+        $sql = "SELECT * FROM usuarios WHERE id = '$id'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
+    }
+
+    public function updatePerfil($data = [])
+    {
+
+        if(count($data) >0){
+            $sql = "UPDATE usuarios SET ";
+            foreach ($data as $key => $value){
+                $campos[] = $key . " = '" . $value . "'";
+            }
+
+            $sql .= implode(', ', $campos);
+            $sql .= " WHERE id = '" . $_SESSION['lgsocial'] . "'";
+
+            $this->db->query($sql);
+        }
+    }
 }

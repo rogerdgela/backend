@@ -18,14 +18,23 @@
 						<li><a href="<?php echo BASE; ?>">Rede Social</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="<?php echo BASE; ?>login/sair">Sair</a></li>
+						<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <?= $viewData['usuario_nome'] ?>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?= BASE ?>perfil">Editar Perfil</a></li>
+                                <li><a href="<?= BASE ?>login/sair">Sair</a></li>
+                            </ul>
+                        </li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div class="container">
 	        <?php
-	        $this->loadViewInTemplate($viewName, $viewData);
+	            $this->loadViewInTemplate($viewName, $viewData);
 	        ?>
 	    </div>
     </body>

@@ -50,7 +50,7 @@ class loginController extends controller
     public function sair()
     {
         unset($_SESSION['lgsocial']);
-        header("Location: ".BASE);
+        header("Location: " . BASE);
         exit();
     }
 }

@@ -1,9 +1,11 @@
 <?php
-class Core {
+class Core
+{
 
-	public function run() {
-                $url = explode('index.php', $_SERVER['PHP_SELF']);
-                $url = end($url);
+	public function run()
+    {
+        $url = explode('index.php', $_SERVER['PHP_SELF']);
+        $url = end($url);
 
 		$params = array();
 		if(!empty($url) && $url != '/') {
@@ -31,7 +33,5 @@ class Core {
 
 		$c = new $currentController();
 		call_user_func_array(array($c, $currentAction), $params);
-
 	}
-
 }
