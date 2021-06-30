@@ -5,8 +5,6 @@ class perfilController extends controller
 {
     public function __construct()
     {
-        parent::__construct();
-
         $u = new usuarios();
         $u->verificarLogin();
     }

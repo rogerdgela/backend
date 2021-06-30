@@ -97,4 +97,21 @@ class usuarios extends model
             $this->db->query($sql);
         }
     }
+
+    public function getSugestoes($limit = 5)
+    {
+        $array = [];
+        $r = new relacionamentos();
+        $ids = $r->getRelacionados($_SESSION['lgsocial']);
+        $ids[] = $_SESSION['lgsocial'];
+
+        $sql = "SELECT id, nome FROM usuarios WHERE id NOT IN (" . implode(',',$ids) . ") ORDER BY RAND() LIMIT $limit";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0) {
+            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return$array;
+    }
 }

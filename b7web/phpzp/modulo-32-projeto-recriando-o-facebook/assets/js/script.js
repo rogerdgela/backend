@@ -1,33 +1,31 @@
 function addFriend(id, obj) {
-
 	if(id != '') {
-
-		$(obj).closest('.sugestaoitem').fadeOut();
-
 		$.ajax({
 			type:'POST',
 			url:'ajax/add_friend',
-			data:{id:id}
+			data:{id:id},
+			success: function (retorno) {
+				if(retorno === 'solicitado'){
+					$(obj).closest('.sugestaoitem').fadeOut();
+				}
+			}
 		});
-
 	}
-
 }
 
 function aceitarFriend(id, obj) {
-
 	if(id != '') {
-
-		$(obj).closest('.requisicaoitem').fadeOut();
-
 		$.ajax({
 			type:'POST',
 			url:'ajax/aceitar_friend',
-			data:{id:id}
+			data:{id:id},
+			success: function (retorno) {
+				if(retorno === 'aceitado'){
+					$(obj).closest('.requisicaoitem').fadeOut();
+				}
+			}
 		});
-
 	}
-
 }
 
 function curtir(obj) {
