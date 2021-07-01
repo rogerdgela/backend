@@ -51,7 +51,7 @@ class relacionamentos extends model
         return $sql['c'];
     }
 
-    public function getRelacionados($id)
+    public function getIdFriends($id)
     {
         $itens = [];
         $sql = "SELECT usuario_de, usuario_para FROM relacionamentos WHERE usuario_de = '$id'  OR usuario_para = '$id'";

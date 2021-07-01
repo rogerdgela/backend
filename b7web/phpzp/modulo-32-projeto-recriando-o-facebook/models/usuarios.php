@@ -102,7 +102,7 @@ class usuarios extends model
     {
         $array = [];
         $r = new relacionamentos();
-        $ids = $r->getRelacionados($_SESSION['lgsocial']);
+        $ids = $r->getIdFriends($_SESSION['lgsocial']);
         $ids[] = $_SESSION['lgsocial'];
 
         $sql = "SELECT id, nome FROM usuarios WHERE id NOT IN (" . implode(',',$ids) . ") ORDER BY RAND() LIMIT $limit";
