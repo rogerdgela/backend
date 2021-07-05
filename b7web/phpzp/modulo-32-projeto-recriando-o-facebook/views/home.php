@@ -1,6 +1,13 @@
 <div class="row">
     <div class="col-sm-8">
-
+        <div class="post_area">
+            <h4>O que você está pensando?</h4>
+            <form method="post" enctype="multipart/form-data">
+                <textarea name="post" class="form-control"></textarea>
+                <input type="file" name="foto"><br>
+                <input type="submit" value="Enviar" class="btn btn-default">
+            </form>
+        </div>
     </div>
 
     <div class="col-sm-4">

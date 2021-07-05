@@ -6,10 +6,12 @@
 	line-height: 40px;
 }
 .post_area {
-	border-bottom:1px solid #CCC;
+	border-bottom:1px solid #cbcbcb;
 }
 .post_area textarea {
 	height:100px;
+	border: 1px solid #cbcbcb;
+	margin-bottom: 5px;
 }
 .postitem {
 	border-bottom:1px solid #CCC;
