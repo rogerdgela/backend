@@ -29,4 +29,22 @@ class posts extends model
         $sql = "INSERT INTO posts SET id_usuario = '$usuario', data_criacao = NOW(), tipo = '$tipo', texto = '$msg', url = '$url', id_grupo = '0'";
         $this->db->query($sql);
     }
+
+    public function getFeed()
+    {
+        $array = [];
+        $r = new relacionamentos();
+        $ids = $r->getIdFriends($_SESSION['lgsocial']);
+
+        $sql = "SELECT *,(SELECT usuarios.nome FROM usuarios WHERE usuarios.id = posts.id_usuario) as nome FROM posts WHERE id_usuario IN ('" .
+            implode(',',$ids) .
+            "') ORDER BY data_criacao DESC";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
+    }
 }

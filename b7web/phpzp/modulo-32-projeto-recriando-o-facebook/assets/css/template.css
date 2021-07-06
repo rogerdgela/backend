@@ -6,22 +6,25 @@
 	line-height: 40px;
 }
 .post_area {
-	border-bottom:1px solid #cbcbcb;
+	border-bottom:1px solid #e2e2dd;
 }
 .post_area textarea {
 	height:100px;
-	border: 1px solid #cbcbcb;
+	border: 1px solid #e2e2dd;
 	margin-bottom: 5px;
 }
 .postitem {
-	border-bottom:1px solid #CCC;
+	border-bottom:1px solid #e2e2dd;
 	padding-top:10px;
 	padding-bottom:10px;
 }
 .postitem_texto {
-	background-color:#EEE;
+	background-color:#FAF9F7;
 	padding:10px;
 }
 .postitem_comentario {
 	display:none;
+}
+.postitem_info {
+	padding: 3px 3px;
 }

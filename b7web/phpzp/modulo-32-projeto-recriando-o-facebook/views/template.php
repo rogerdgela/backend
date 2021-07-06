@@ -6,7 +6,8 @@
 	    <title>Facebook</title>
 	    <link href="<?php echo BASE; ?>assets/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="<?php echo BASE; ?>assets/css/template.css" rel="stylesheet">
-	    <script type="text/javascript" src="<?php echo BASE; ?>assets/js/jquery.min.js"></script>
+        <script src="https://use.fontawesome.com/0e639a759a.js"></script>
+        <script type="text/javascript" src="<?php echo BASE; ?>assets/js/jquery.min.js"></script>
 	    <script type="text/javascript" src="<?php echo BASE; ?>assets/js/bootstrap.min.js"></script>
 	    <script type="text/javascript" src="<?php echo BASE; ?>assets/js/script.js"></script>
     </head>
