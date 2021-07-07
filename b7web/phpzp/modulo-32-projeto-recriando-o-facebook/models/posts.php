@@ -36,7 +36,12 @@ class posts extends model
         $r = new relacionamentos();
         $ids = $r->getIdFriends($_SESSION['lgsocial']);
 
-        $sql = "SELECT *,(SELECT usuarios.nome FROM usuarios WHERE usuarios.id = posts.id_usuario) as nome FROM posts WHERE id_usuario IN ('" .
+        $sql = "SELECT 
+        *,
+        (SELECT usuarios.nome FROM usuarios WHERE usuarios.id = posts.id_usuario) as nome,
+        (SELECT count(*) FROM post_likes WHERE post_likes.id_post = posts.id) as likes,
+        (SELECT count(*) FROM post_likes WHERE post_likes.id_post = posts.id AND post_likes.id_usuario = " . $_SESSION['lgsocial'] . ") as liked
+        FROM posts WHERE id_usuario IN ('" .
             implode(',',$ids) .
             "') ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
@@ -46,5 +51,29 @@ class posts extends model
         }
 
         return $array;
+    }
+
+    public function isLiked($id, $id_usuario)
+    {
+        $sql = "SELECT id FROM post_likes WHERE id_post = '$id' AND id_usuario = '$id_usuario'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function removeLike($id, $id_usuario)
+    {
+        $sql = "DELETE FROM post_likes WHERE id_post = '$id' AND id_usuario = '$id_usuario'";
+        $this->db->query($sql);
+    }
+
+    public function addLike($id, $id_usuario)
+    {
+        $sql = "INSERT INTO post_likes SET id_post = '$id', id_usuario = '$id_usuario'";
+        $this->db->query($sql);
     }
 }

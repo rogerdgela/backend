@@ -34,4 +34,19 @@ class ajaxController extends controller
             echo $response;
         }
     }
+
+    public function curtir()
+    {
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            $id = addslashes($_POST['id']);
+            $id_usuario = $_SESSION['lgsocial'];
+
+            $p = new posts();
+            if($p->isLiked($id, $id_usuario)) {
+                $p->removeLike($id, $id_usuario);
+            }else{
+                $p->addLike($id, $id_usuario);
+            }
+        }
+    }
 }

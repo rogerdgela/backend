@@ -36,22 +36,25 @@ function curtir(obj) {
 	if(liked == 0) {
 		likes++;
 		liked = 1;
-		var texto = 'Descurtir';
+		var texto = '<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>';
 	} else {
 		likes--;
 		liked = 0;
-		var texto = 'Curtir';
+		var texto = '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>';
 	}
 
 	$(obj).attr('data-likes', likes);
 	$(obj).attr('data-liked', liked);
 
-	$(obj).html('('+likes+') '+texto);
+	$(obj).html(likes + ' ' + texto);
 	
 	$.ajax({
 		type:'POST',
 		url:'ajax/curtir',
-		data:{id:id}
+		data:{id:id},
+		success: function (retorno) {
+			//console.log(retorno);
+		}
 	});
 }
 
