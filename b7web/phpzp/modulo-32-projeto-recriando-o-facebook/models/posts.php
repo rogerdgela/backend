@@ -32,25 +32,29 @@ class posts extends model
 
     public function getFeed()
     {
-        $array = [];
+        $posts = [];
         $r = new relacionamentos();
         $ids = $r->getIdFriends($_SESSION['lgsocial']);
+        $ids[] = $_SESSION['lgsocial'];
 
         $sql = "SELECT 
         *,
         (SELECT usuarios.nome FROM usuarios WHERE usuarios.id = posts.id_usuario) as nome,
         (SELECT count(*) FROM post_likes WHERE post_likes.id_post = posts.id) as likes,
         (SELECT count(*) FROM post_likes WHERE post_likes.id_post = posts.id AND post_likes.id_usuario = " . $_SESSION['lgsocial'] . ") as liked
-        FROM posts WHERE id_usuario IN ('" .
-            implode(',',$ids) .
-            "') ORDER BY data_criacao DESC";
+        FROM posts WHERE posts.id_usuario IN (" . implode(',',$ids) . ") ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
 
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($array as $post) {
+                $post['comentarios'] = $this->buscarComentarios($post['id']);
+                $posts[] = $post;
+            }
         }
 
-        return $array;
+        return $posts;
     }
 
     public function isLiked($id, $id_usuario)
@@ -75,5 +79,31 @@ class posts extends model
     {
         $sql = "INSERT INTO post_likes SET id_post = '$id', id_usuario = '$id_usuario'";
         $this->db->query($sql);
+    }
+
+    public function addComentario($id, $id_usuario, $texto)
+    {
+        $sql = "INSERT INTO posts_comentarios SET id_post = '$id', id_usuario = '$id_usuario', data_criacao = NOW(), texto = '$texto'";
+        $this->db->query($sql);
+        return true;
+    }
+
+    public function buscarComentarios($id_post) {
+        $array = [];
+
+        $sql = "SELECT
+                    (select usuarios.nome from usuarios where usuarios.id = posts_comentarios.id_usuario) AS nome,
+                    texto, 
+                    data_criacao
+                FROM posts_comentarios 
+                WHERE id_post = '$id_post'
+                ORDER BY data_criacao DESC";
+        $sql = $this->db->query($sql);
+
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
     }
 }

@@ -49,4 +49,16 @@ class ajaxController extends controller
             }
         }
     }
+
+    public function comentar()
+    {
+        $id = addslashes($_POST['id']);
+        $id_usuario = $_SESSION['lgsocial'];
+        $texto = addslashes($_POST['txt']);
+
+        $p = new posts();
+        if(!empty($texto)){
+            echo $p->addComentario($id, $id_usuario, $texto);
+        }
+    }
 }

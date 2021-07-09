@@ -32,7 +32,7 @@ class homeController extends controller
             $p->addPost($postmsg, $foto);
         }
 
-        $dados['sugestoes'] = $u->getSugestoes(3);
+        $dados['sugestoes'] = $u->getSugestoes(10);
         $dados['requisicoes'] = $r->getRequisicoes();
         $dados['totalamigos'] = $r->getTotalAmigos($_SESSION['lgsocial']);
         $dados['feed'] = $p->getFeed();

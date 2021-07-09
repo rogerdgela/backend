@@ -24,7 +24,17 @@
 }
 .postitem_comentario {
 	display:none;
+	margin-top: 10px;
+}
+.postitem_comentario .btn-comentar {
+	margin-top: 5px;
 }
 .postitem_info {
 	padding: 3px 3px;
+}
+
+.postitem_comentarios {
+	border-left: 0;
+	border-right: 0;
+	margin: 0;
 }

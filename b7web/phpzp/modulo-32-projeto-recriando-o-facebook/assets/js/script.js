@@ -59,8 +59,9 @@ function curtir(obj) {
 }
 
 function displayComentario(obj) {
-	$(obj).closest('.postitem_botoes').find('.postitem_comentario').show();
+	$(obj).closest('.postitem_botoes').find('.postitem_comentario').slideToggle();
 }
+
 function comentar(obj) {
 	var id = $(obj).attr('data-id');
 	var txt = $(obj).closest('.postitem_comentario').find('.postitem_txt').val();
@@ -68,7 +69,13 @@ function comentar(obj) {
 	$.ajax({
 		type:'POST',
 		url:'ajax/comentar',
-		data:{id:id, txt:txt}
+		data:{id:id, txt:txt},
+		success: function (retorno) {
+			if(retorno) {
+				$(obj).closest('.postitem_comentario').find('.postitem_txt').val('')
+				$(obj).closest('.postitem_botoes').find('.postitem_comentario').slideToggle();
+			}
+		}
 	});
 }
 

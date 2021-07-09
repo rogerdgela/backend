@@ -5,17 +5,19 @@
             <form method="post" enctype="multipart/form-data">
                 <textarea name="post" class="form-control"></textarea>
                 <input type="file" name="foto"><br>
-                <input type="submit" value="Enviar" class="btn btn-info">
+                <input type="submit" value="Enviar" class="btn btn-primary">
             </form>
         </div>
 
-        <div class="feed">
-            <?php
-                foreach ($feed as $postitem) {
-                    $this->loadView('postitem', $postitem);
-                }
-            ?>
-        </div>
+
+            <div class="feed">
+                <?php
+                    foreach ($feed as $postitem) {
+                        $this->loadView('postitem', $postitem);
+                    }
+                ?>
+            </div>
+
     </div>
 
     <div class="col-sm-4">
