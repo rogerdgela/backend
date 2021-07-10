@@ -9,14 +9,13 @@
             </form>
         </div>
 
-
-            <div class="feed">
-                <?php
-                    foreach ($feed as $postitem) {
-                        $this->loadView('postitem', $postitem);
-                    }
-                ?>
-            </div>
+        <div class="feed">
+            <?php
+                foreach ($feed as $postitem) {
+                    $this->loadView('postitem', $postitem);
+                }
+            ?>
+        </div>
 
     </div>
 
@@ -49,5 +48,21 @@
                 <?php } ?>
             </div>
         <?php } ?>
+
+        <div class="widget">
+            <h4>Grupos</h4>
+            <form method="post">
+                <div class="input-group">
+                    <input type="text" name="grupo" class="form-control" placeholder="Nome do grupo">
+                    <span class="input-group-btn">
+                        <input type="submit" value="Criar" class="btn btn-primary">
+                    </span>
+                </div>
+            </form>
+
+            <?php foreach ($grupos as $grupo) { ?>
+                <a href="<?= BASE ?>grupos/abrir/<?= $grupo['id'] ?>"><?= $grupo['titulo'] ?></a>
+            <?php } ?>
+        </div>
     </div>
 </div>

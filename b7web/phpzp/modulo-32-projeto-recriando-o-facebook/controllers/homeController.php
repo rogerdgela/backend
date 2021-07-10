@@ -12,6 +12,7 @@ class homeController extends controller
         $u = new usuarios();
         $p = new posts();
         $r = new relacionamentos();
+        $g = new grupos();
 
         $dados = [
             'usuario_nome' => ''
@@ -32,10 +33,18 @@ class homeController extends controller
             $p->addPost($postmsg, $foto);
         }
 
+        if(isset($_POST['grupo']) && !empty($_POST['grupo'])) {
+            $grupo = addslashes($_POST['grupo']);
+            $id_grupo = $g->criar($grupo);
+            header("Location: ".BASE."grupos/abrir/".$id_grupo);
+            exit();
+        }
+
         $dados['sugestoes'] = $u->getSugestoes(10);
         $dados['requisicoes'] = $r->getRequisicoes();
         $dados['totalamigos'] = $r->getTotalAmigos($_SESSION['lgsocial']);
         $dados['feed'] = $p->getFeed();
+        $dados['grupos'] = $g->getGrupos();
 
         $this->loadTemplate('home', $dados);
     }
