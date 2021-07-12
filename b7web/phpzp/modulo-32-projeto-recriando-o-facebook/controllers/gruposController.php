@@ -19,7 +19,19 @@ class gruposController extends controller
         ];
 
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsocial']);
+        $dados['info'] = $g->getInfo($id_grupo);
+        $dados['is_membro'] = $g->isMembro($id_grupo, $_SESSION['lgsocial']);
+        $dados['qty_membros'] = $g->getQtyMembros($id_grupo);
 
         $this->loadTemplate('grupo', $dados);
+    }
+
+    public function entrar($id_grupo)
+    {
+        $id_usuario = $_SESSION['lgsocial'];
+        $g = new grupos();
+        $g->addGrupo($id_grupo, $id_usuario);
+
+        header("Location: " . BASE . "grupos/abrir/" . $id_grupo);
     }
 }
