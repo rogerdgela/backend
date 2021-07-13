@@ -18,9 +18,7 @@ class homeController extends controller
             'usuario_nome' => ''
         ];
 
-
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsocial']);
-
 
         if(isset($_POST['post']) && !empty($_POST['post'])){
             $postmsg = addslashes($_POST['post']);
