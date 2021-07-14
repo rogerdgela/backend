@@ -17,6 +17,15 @@
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
 						<li><a href="<?php echo BASE; ?>">Rede Social</a></li>
+                        <li>
+                            <form method="get" action="<?= BASE ?>busca" class="navbar-form navbar-left navbar-input-group">
+                                <div class="form-group">
+                                    <input class="form-control" name="q" type="text" placeholder="O procura?" aria-label="Search">
+                                </div>
+
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </form>
+                        </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">

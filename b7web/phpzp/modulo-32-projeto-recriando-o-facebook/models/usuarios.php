@@ -114,4 +114,20 @@ class usuarios extends model
 
         return$array;
     }
+
+    public function procurar($q)
+    {
+        $array = [];
+
+        $q = addslashes($q);
+
+        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$q%'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $array;
+    }
 }
