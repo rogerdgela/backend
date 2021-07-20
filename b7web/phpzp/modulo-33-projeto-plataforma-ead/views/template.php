@@ -7,6 +7,14 @@
 		<script type="text/javascript" src="<?php echo BASE; ?>assets/js/script.js"></script>
 	</head>
 	<body>
+        <div class="topo">
+            <a href="<?= BASE ?>login/logout">
+                <div>Sair</div>
+            </a>
+            <div class="topousuario">
+                <?= $viewData['info']->getNome() ?>
+            </div>
+        </div>
 		<?php $this->loadViewInTemplate($viewName, $viewData); ?>
 	</body>
 </html>

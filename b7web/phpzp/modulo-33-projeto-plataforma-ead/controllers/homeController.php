@@ -12,7 +12,17 @@ class homeController extends controller {
 	}
 	
 	public function index() {
-		$dados = [];
+		$dados = [
+		    'info' => [],
+            'cursos' => []
+        ];
+
+		$alunos = new Alunos();
+		$alunos->setAluno($_SESSION['lgaluno']);
+		$dados['info'] = $alunos;
+
+		$cursos = new Cursos();
+		$dados['cursos'] = $cursos->getCursosDoAluno($alunos->getId());
 
 		$this->loadTemplate('home', $dados);
 	}
